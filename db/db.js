@@ -6,6 +6,18 @@ let connection = mysql.createConnection(mysqlConfig);
 
 connection.connect();
 
+let getSingleProduct = (reqItem) => {
+    return new Promise ((resolve, reject) => {
+        connection.query(`SELECT * FROM products WHERE id= ${reqItem}`, (error, result) => {
+            if (error) {
+                reject(error);
+            }
+
+            resolve(result);
+        })
+
+    })
+}
 
 let getAllProducts = () => {
     return new Promise ((resolve, reject) => {
@@ -41,7 +53,7 @@ let seedDatabase = () => {
 
 module.exports.getAllProducts = getAllProducts;
 module.exports.seedDatabase = seedDatabase;
-
+module.exports.getSingleProduct = getSingleProduct;
 
 
 
