@@ -46,8 +46,8 @@ class App extends React.Component {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
-      this.setState({selectedProduct: response.data[0]})
-      console.log(this.state.selectedProduct);
+      console.log(response.data);
+      // this.setState({selectedProduct: response.data[0]})
     })
     .catch((error) => {
       console.log(error);
