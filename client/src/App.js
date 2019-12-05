@@ -31,29 +31,40 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // axios.post('http://localhost:5000/getSingleProduct', {
-    //   selectedItemId: this.state.searchItem
-    // })
-    // .then((response) => {
-    //   this.setState({selectedProduct: response.data[0]})
-    //   console.log(this.state.selectedProduct);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-
-    axios.post('http://52.14.162.174:5000/test', {
+    axios.post('http://localhost:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
-      console.log(response.data);
-      this.setState({selectedProduct: response.data})
+      this.setState({selectedProduct: response.data[0]})
+      console.log(this.state.selectedProduct);
     })
     .catch((error) => {
       console.log(error);
     })
 
-  }
+    // TEST BELOW FOR AWS
+    // axios.post('http://52.14.162.174:5000/test', {
+    //   selectedItemId: this.state.searchItem
+    // })
+    // .then((response) => {
+    //   console.log(response.data);
+    //   this.setState({selectedProduct: response.data})
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
+
+    // axios.post('http://localhost:5000/test', {
+    //   selectedItemId: this.state.searchItem
+    // })
+    // .then((response) => {
+    //   console.log(response.data);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
+
+  // }
 
   handleChange(event) {
     this.setState({
