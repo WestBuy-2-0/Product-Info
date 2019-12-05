@@ -42,7 +42,7 @@ class App extends React.Component {
     //   console.log(error);
     // })
 
-    axios.post('http://172.31.32.62:5000/test', {
+    axios.post('http://52.14.162.174:5000/test', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
@@ -59,6 +59,7 @@ class App extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+    console.log(this.state.searchItem)
   }
 
   render() {
