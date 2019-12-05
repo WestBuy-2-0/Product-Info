@@ -47,7 +47,7 @@ class App extends React.Component {
     })
     .then((response) => {
       console.log(response.data);
-      // this.setState({selectedProduct: response.data[0]})
+      this.setState({selectedProduct: response.data})
     })
     .catch((error) => {
       console.log(error);
