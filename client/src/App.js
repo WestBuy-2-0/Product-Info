@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       searchItem: '',
-      selectedProduct: []
+      selectedProduct: undefined
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,51 +18,28 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-    // axios.get('http://localhost:5000/getAllProducts')
-    // .then((res) => {
-    //   this.setState({ data: res.data })
-    //   // console.log(this.state.data);
-    // })
-    // .catch((err) => {
-    //   console.log(err)
-    // });
+
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('http://52.14.162.174:5000/getSingleProduct', {
+    axios.post('http://localhost:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
-      this.setState({selectedProduct: response.data[0]})
+      console.log(response.data.length);
+      if (response.data.length > 0) {
+        this.setState({selectedProduct: response.data[0]})
+      } else {
+        this.setState({selectedProduct: undefined})
+      }
       console.log(this.state.selectedProduct);
     })
     .catch((error) => {
       console.log(error);
     })
 
-    // TEST BELOW FOR AWS
-    // axios.post('http://52.14.162.174:5000/test', {
-    //   selectedItemId: this.state.searchItem
-    // })
-    // .then((response) => {
-    //   console.log(response.data);
-    //   this.setState({selectedProduct: response.data})
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-
-    // axios.post('http://localhost:5000/test', {
-    //   selectedItemId: this.state.searchItem
-    // })
-    // .then((response) => {
-    //   console.log(response.data);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
 
   }
 
@@ -70,14 +47,13 @@ class App extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
-    console.log(this.state.searchItem)
   }
 
   render() {
     let selectItemForm;
     let selectedItem;
 
-    if (this.state.selectedProduct.length === 0) {
+    if (this.state.selectedProduct === undefined) {
       selectItemForm =  <form onSubmit={this.handleSubmit}>
                             <h3>Item Search</h3>
                             <input id="search-item" name="searchItem" onChange={this.handleChange} />

@@ -12,7 +12,6 @@ let getSingleProduct = (reqItem) => {
             if (error) {
                 reject(error);
             }
-
             resolve(result);
         })
 
