@@ -31,7 +31,7 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('http://localhost:5000/getSingleProduct', {
+    axios.post('http://52.14.162.174:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
@@ -64,7 +64,7 @@ class App extends React.Component {
     //   console.log(error);
     // })
 
-  // }
+  }
 
   handleChange(event) {
     this.setState({
