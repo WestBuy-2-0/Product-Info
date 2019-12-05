@@ -42,7 +42,7 @@ class App extends React.Component {
     //   console.log(error);
     // })
 
-    axios.post('http://http://52.14.162.174/5000/test', {
+    axios.post('http://http://52.14.162.174:5000/test', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
