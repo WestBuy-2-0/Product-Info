@@ -7,7 +7,7 @@ const Product = (props) => {
   <div className="product-info-container">
       <div>
         <div>
-          {/* <ol className="product-directory">West Buy => Category => Sub-Category</ol> */}
+          <ol className="product-directory">West Buy > Category > Sub-Category</ol>
           <h1 className="product-title">{props.selectedProductProp.productName}</h1>
 
           <div className="product-info">
@@ -37,7 +37,7 @@ const Product = (props) => {
             </div>
           </div>
 
-          {/* <ul className="product-feedback">
+          <ul className="product-feedback">
             <div>
               <span >
                 <span>**** </span>
@@ -58,7 +58,7 @@ const Product = (props) => {
                 </div>
               </div>
             </div>
-          </ul> */}
+          </ul>
         </div>
       </div>
   </div>
@@ -71,3 +71,5 @@ const Product = (props) => {
 
 
 export default Product;
+
+
