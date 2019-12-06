@@ -17,4 +17,4 @@ sudo npm install express
 nodemon server/server.js
 
 ssh -i product-info.pem ubuntu@ec2-52-14-162-174.us-east-2.compute.amazonaws.com
- mysql -h product-infor-db3.ckazxowg68vw.us-east-2.rds.amazonaws.com -P 3306 -u admin -p
+mysql -h product-infor-db3.ckazxowg68vw.us-east-2.rds.amazonaws.com -P 3306 -u admin -p
