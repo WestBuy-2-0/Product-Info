@@ -8,7 +8,7 @@ connection.connect();
 
 let getSingleProduct = (reqItem) => {
     return new Promise ((resolve, reject) => {
-        connection.query(`SELECT * FROM products WHERE id= ${reqItem}`, (error, result) => {
+        connection.query(`SELECT * FROM products WHERE sku= "${reqItem}"`, (error, result) => {
             if (error) {
                 reject(error);
             }

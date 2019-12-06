@@ -1,6 +1,91 @@
-.product-title{
+* {
+    box-sizing: border-box;
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+.main-container {
+    width: 100%;
+}
+
+.container {
+    width: 100%;
+}
+
+.product-directory-bar {
+    width: 100%;
+    display: flex;
+}
+
+.product-directory {
+    width: 83.33%;
+    float: left;
+    text-align: left;
+}
+
+.product-links {
+    width: 16.66%;
+    float: right;
+}
+
+.product-info-column-one {
+    float: left;
+    width: 66.66%;
+    text-align: left;
+}
+
+.product-info {
+    display: flex;
+}
+
+.product-feedback {
+    display: flex;
+    text-align: left;
+}
+
+.product-feedback-bar {
+    display: flex;
+    text-align: left;
+}
+
+
+
+
+
+
+
+
+.product-info-column-two {
+    float: right;
+    width: 33.33%;
+    text-align: left;
+}
+
+.product-title {
     font-weight: 400;
     font-size: 20px;
     display: block;
     font-family: "Human BBY Web", Arial, Helvetica, sans-serif;;
+}
+
+.image-modal-component {
+    width: 550px;
+    height: 600px;
+    background-color: tomato;
 }

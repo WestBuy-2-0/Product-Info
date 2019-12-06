@@ -8,7 +8,7 @@ const port = 5000;
 
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('public'));
 app.use(bodyParser.json());
 
 // app.get('/getAllProducts', (req, res) => {

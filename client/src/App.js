@@ -101,6 +101,7 @@ class App extends React.Component {
       <div className="App">
         <div className="Header">
           {selectItemForm}
+          <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
         </div>
         {selectedItem}
       </div>
