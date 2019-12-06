@@ -24,6 +24,17 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    // axios.post('http://52.14.162.174:5000/getSingleProduct', {
+    //   selectedItemId: this.state.searchItem
+    // })
+    // .then((response) => {
+    //   this.setState({selectedProduct: response.data[0]})
+    //   console.log(this.state.selectedProduct);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
+
     axios.post('http://localhost:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
@@ -32,7 +43,7 @@ class App extends React.Component {
       if (response.data.length > 0) {
         this.setState({selectedProduct: response.data[0]})
       } else {
-        this.setState({selectedProduct: undefined})
+        this.setState({selectedProduct: 404})
       }
       console.log(this.state.selectedProduct);
     })
@@ -60,6 +71,18 @@ class App extends React.Component {
                             <button>Find Item</button>
                           </form>
       selectedItem = undefined;
+
+    } else if (this.state.selectedProduct === 404) {
+      selectItemForm =  <form onSubmit={this.handleSubmit}>
+                            <h3>Item Search</h3>
+                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
+                            <button>Find Item</button>
+                          </form>
+      selectedItem = <div>
+                        <p>Error 400</p>
+                        <p>Item Not Found</p>
+                    </div>;
+
     } else {
       selectItemForm =  <form onSubmit={this.handleSubmit}>
                             <h3>Item Search</h3>
