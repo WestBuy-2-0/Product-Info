@@ -12,5 +12,6 @@ sudo npm install
 npm start
 
 sudo npm install cors
+sudo npm install mysql
 sudo npm install express
 nodemon server/server.js

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import axios from 'axios';
-import Product from './components/product'
+import Product from './components/Product'
 
 class App extends React.Component {
   constructor(props) {
@@ -28,7 +28,12 @@ class App extends React.Component {
     //   selectedItemId: this.state.searchItem
     // })
     // .then((response) => {
-    //   this.setState({selectedProduct: response.data[0]})
+    //   console.log(response.data.length);
+    //   if (response.data.length > 0) {
+    //     this.setState({selectedProduct: response.data[0]})
+    //   } else {
+    //     this.setState({selectedProduct: 404})
+    //   }
     //   console.log(this.state.selectedProduct);
     // })
     // .catch((error) => {
@@ -94,7 +99,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        {selectItemForm}
+        <div className="Header">
+          {selectItemForm}
+        </div>
         {selectedItem}
       </div>
     );
