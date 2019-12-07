@@ -24,7 +24,7 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    axios.post('http://52.14.162.174:5000/getSingleProduct', {
+    axios.post('http://3.15.215.226:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
