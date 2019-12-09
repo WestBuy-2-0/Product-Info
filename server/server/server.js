@@ -23,6 +23,11 @@ app.use(bodyParser.json());
 //     })
 // });
 
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+  
+
 app.post('/getSingleProduct', (req, res) => {
     let reqItem = req.body.selectedItemId;
 

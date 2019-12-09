@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    background-color: #f0f0f0;
 }
 
 .col-1 {width: 8.33%;}
@@ -19,6 +20,7 @@
     float: left;
     padding: 15px;
 }
+
 
 .main-container {
     width: 100%;
@@ -64,6 +66,10 @@
     text-align: left;
 }
 
+.image-modal-component {
+    width: 66%;
+    text-align: left;
+}
 
 
 
