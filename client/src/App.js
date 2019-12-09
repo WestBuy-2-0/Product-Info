@@ -24,23 +24,7 @@ class App extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    // axios.post('http://3.15.215.226:5000/getSingleProduct', {
-    //   selectedItemId: this.state.searchItem
-    // })
-    // .then((response) => {
-    //   console.log(response.data.length);
-    //   if (response.data.length > 0) {
-    //     this.setState({selectedProduct: response.data[0]})
-    //   } else {
-    //     this.setState({selectedProduct: 404})
-    //   }
-    //   console.log(this.state.selectedProduct);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-
-    axios.post('http://localhost:5000/getSingleProduct', {
+    axios.post('http://18.191.11.202:5000/getSingleProduct', {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
@@ -55,6 +39,22 @@ class App extends React.Component {
     .catch((error) => {
       console.log(error);
     })
+
+    // axios.post('http://localhost:5000/getSingleProduct', {
+    //   selectedItemId: this.state.searchItem
+    // })
+    // .then((response) => {
+    //   console.log(response.data.length);
+    //   if (response.data.length > 0) {
+    //     this.setState({selectedProduct: response.data[0]})
+    //   } else {
+    //     this.setState({selectedProduct: 404})
+    //   }
+    //   console.log(this.state.selectedProduct);
+    // })
+    // .catch((error) => {
+    //   console.log(error);
+    // })
 
 
   }
