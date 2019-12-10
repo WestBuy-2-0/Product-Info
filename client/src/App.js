@@ -18,14 +18,32 @@ class App extends React.Component {
   }
   
   componentDidMount() {
-
+    //be sure to comment out below
+    
+    axios.post('http://18.191.11.202:5000/getSingleProduct', {
+      // this.state.searchItem
+      selectedItemId: '12-005'
+    })
+    .then((response) => {
+      console.log(response.data.length);
+      if (response.data.length > 0) {
+        this.setState({selectedProduct: response.data[0]})
+      } else {
+        this.setState({selectedProduct: 404})
+      }
+      console.log(this.state.selectedProduct);
+    })
+    .catch((error) => {
+      console.log(error);
+    })
   }
 
   handleSubmit(event) {
     event.preventDefault();
 
     axios.post('http://18.191.11.202:5000/getSingleProduct', {
-      selectedItemId: this.state.searchItem
+      // this.state.searchItem
+      selectedItemId: '12-005'
     })
     .then((response) => {
       console.log(response.data.length);
@@ -99,10 +117,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
-          herewe
         <div className="Header">
           {selectItemForm}
-          <p>+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</p>
+          <hr></hr>
         </div>
         {selectedItem}
       </div>
