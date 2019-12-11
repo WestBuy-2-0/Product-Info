@@ -19,19 +19,16 @@ class App extends React.Component {
   
   componentDidMount() {
     //be sure to comment out below
-    
     axios.post('http://18.191.11.202:5000/getSingleProduct', {
       // this.state.searchItem
       selectedItemId: '12-005'
     })
     .then((response) => {
-      console.log(response.data.length);
       if (response.data.length > 0) {
         this.setState({selectedProduct: response.data[0]})
       } else {
         this.setState({selectedProduct: 404})
       }
-      console.log(this.state.selectedProduct);
     })
     .catch((error) => {
       console.log(error);
@@ -45,34 +42,15 @@ class App extends React.Component {
       selectedItemId: this.state.searchItem
     })
     .then((response) => {
-      console.log(response.data.length);
       if (response.data.length > 0) {
         this.setState({selectedProduct: response.data[0]})
       } else {
         this.setState({selectedProduct: 404})
       }
-      console.log(this.state.selectedProduct);
     })
     .catch((error) => {
       console.log(error);
     })
-
-    // axios.post('http://localhost:5000/getSingleProduct', {
-    //   selectedItemId: this.state.searchItem
-    // })
-    // .then((response) => {
-    //   console.log(response.data.length);
-    //   if (response.data.length > 0) {
-    //     this.setState({selectedProduct: response.data[0]})
-    //   } else {
-    //     this.setState({selectedProduct: 404})
-    //   }
-    //   console.log(this.state.selectedProduct);
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
-
 
   }
 
