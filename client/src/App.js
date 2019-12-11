@@ -42,8 +42,7 @@ class App extends React.Component {
     event.preventDefault();
 
     axios.post('http://18.191.11.202:5000/getSingleProduct', {
-      // this.state.searchItem
-      selectedItemId: '12-005'
+      selectedItemId: this.state.searchItem
     })
     .then((response) => {
       console.log(response.data.length);

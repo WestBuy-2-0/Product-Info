@@ -90,12 +90,13 @@ const Product = (props) => {
 
 
         <div className="product-info-cart">
-          
-          <button className="product-info-cart-button"><i className="fas fa-shopping-cart"></i>Add to Cart</button>
+          <button className="product-info-cart-button"><i className="fas fa-shopping-cart"></i>Add to Wagon</button>
           <div className="product-info-cart-aux">
             <div className="product-info-compare">
               <i className="product-info-compare-checkbox"></i>
+              <span className="product-info-compare-text">
                 Compare
+              </span>
             </div>
             <div className="product-info-save">
               <div className="product-info-save-for-later">
@@ -108,7 +109,6 @@ const Product = (props) => {
           </div>
         </div>
       </div>
-
     </div>
   </div>
 )};
