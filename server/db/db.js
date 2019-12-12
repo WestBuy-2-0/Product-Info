@@ -29,6 +29,7 @@ let getAllProducts = () => {
     })
 }
 
+
 let seedDatabase = () => {
     return new Promise ((resolve, reject) => {
         for (let product = 0; inventory.length > product; product++) {
