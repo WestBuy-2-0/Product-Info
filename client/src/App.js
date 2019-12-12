@@ -10,7 +10,7 @@ class App extends React.Component {
     this.state = {
       data: [],
       searchItem: '',
-      selectedProduct: undefined
+      selectedProduct: ''
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,6 +29,8 @@ class App extends React.Component {
       } else {
         this.setState({selectedProduct: 404})
       }
+
+      console.log(response.data[0])
     })
     .catch((error) => {
       console.log(error);
@@ -61,44 +63,9 @@ class App extends React.Component {
   }
 
   render() {
-    let selectItemForm;
-    let selectedItem;
-
-    if (this.state.selectedProduct === undefined) {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-      selectedItem = undefined;
-
-    } else if (this.state.selectedProduct === 404) {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-      selectedItem = <div>
-                        <p>Error 400</p>
-                        <p>Item Not Found</p>
-                    </div>;
-
-    } else {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-      selectedItem = <Product selectedProductProp={this.state.selectedProduct} />
-    }
-
     return (
       <div className="App">
-        <div className="Header">
-          {selectItemForm}
-          <hr></hr>
-        </div>
-        {selectedItem}
+        <Product selectedProductProp={this.state.selectedProduct} />
       </div>
     );
   }
