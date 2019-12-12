@@ -9,3 +9,7 @@ import './App.css';
 
 ReactDOM.render(<App />, document.getElementById('product-info-container'));
 
+
+
+
+
