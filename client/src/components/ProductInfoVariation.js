@@ -11,6 +11,7 @@ const ProductInfoVariation = (props) => {
                     {props.productInfoVariationProp.onHand}
                 </label>
         </div>
+        
         <div className="product-info-variations">
             <div className="product-info-variations-header">
                 Available:
