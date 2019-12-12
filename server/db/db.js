@@ -8,7 +8,7 @@ connection.connect();
 
 let getSingleProduct = (reqItem) => {
     return new Promise ((resolve, reject) => {
-        connection.query(`SELECT * FROM products WHERE sku= "${reqItem}"`, (error, result) => {
+        connection.query(`SELECT * FROM products WHERE id=${reqItem}`, (error, result) => {
             if (error) {
                 reject(error);
             }
@@ -28,6 +28,7 @@ let getAllProducts = () => {
         })
     })
 }
+
 
 let seedDatabase = () => {
     return new Promise ((resolve, reject) => {
@@ -50,7 +51,7 @@ let seedDatabase = () => {
     })
 }
 
-module.exports.getAllProducts = getAllProducts;
+// module.exports.getAllProducts = getAllProducts;
 module.exports.seedDatabase = seedDatabase;
 module.exports.getSingleProduct = getSingleProduct;
 
