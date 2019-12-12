@@ -29,6 +29,8 @@ class App extends React.Component {
       } else {
         this.setState({selectedProduct: 404})
       }
+
+      console.log(response.data[0])
     })
     .catch((error) => {
       console.log(error);

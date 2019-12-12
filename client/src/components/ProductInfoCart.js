@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductInfoFulfillment from './ProductInfoFulfillment'
 
 const ProductInfoCart = (props) => {
     return (
@@ -18,19 +19,24 @@ const ProductInfoCart = (props) => {
             </div>
             <div className="product-info-open-box-option">
                 <span className="product-info-open-box-label">Open-Box:</span>
-                <span className="product-info-open-box-price"> from $XX.XX</span>
+                <span className="product-info-open-box-price">
+                    from ${(parseInt(props.productInfoCartProp.price) - parseInt(props.productInfoCartProp.price) * .25).toFixed(0)}.99
+                </span>
             </div>
             <div className="product-info-variations">
                 <div className="product-info-variations-header">
-                <label className="product-info-variations-label">-- Product Options --</label>
+                    Available Sizes:
                 </div>
+                    <label className="product-info-variations-label">{props.productInfoCartProp.onHand}</label>
             </div>
-            <div className="product-info-fulfillment">
-                <div className="product-info-fulfillment-option-one">FREE Shipping: Get it by Thu, Dec 12</div>
-                <div className="product-info-fulfillment-option-two"><strong>Want it tomorrow? </strong>Choose Next-Day Delivery in checkout to 73301.</div>
-                <div className="product-info-fulfillment-option-three"> <strong>Store Pickup:</strong>Order now and South Austin will have it ready for pickup by Thu, Dec 12. Available today at a store 9 miles away.</div>
+            <div className="product-info-variations">
+                <div className="product-info-variations-header">
+                    Available:
+                </div>
+                    <label className="product-info-variations-label">{props.productInfoCartProp.onHand}</label>
             </div>
 
+            <ProductInfoFulfillment />
 
             <div className="product-info-cart">
                 <button className="product-info-cart-button"><i className="fas fa-shopping-cart"></i>Add to Wagon</button>

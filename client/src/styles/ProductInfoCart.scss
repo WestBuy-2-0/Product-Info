@@ -36,7 +36,23 @@
     }
     
     .product-info-open-box-label {
-        font-weight: bold;
+        font-family: "Human BBY Web", Arial, Helvetica, sans-serif;
+        font-weight: 750;
+        font-style: normal;
+        font-stretch: normal;
+        display: inline-block;
+        font-size: 13px;
+        line-height: 17px;
+        color: #1d252c;
+    }
+
+    .product-info-variations-header {
+        font-weight: 800;
+        margin-bottom: 0;
+        vertical-align: middle;
+        color: #040c13;
+        font-size: inherit;
+        font-size: 15px;
     }
     
     .product-info-open-box-price {
@@ -103,7 +119,10 @@
         text-align: center;
         vertical-align: middle;
         display: inline-block;
-        transition: all .3s ease-out 0s;
+    }
+
+    .product-info-cart-button:hover{
+        background-color: #fff200;
     }
     
     .product-info-cart-aux {

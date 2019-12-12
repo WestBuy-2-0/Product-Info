@@ -19,7 +19,7 @@ const ProductInfo = (props) => {
             <div className="product-feedback">
                 <div className="product-feedback-bar">
                     <div className="product-info-review-bar">
-                    <span className="product-info-review-stars">****</span>
+                    <div id="product-info-star-placeholder"></div>
                     <span className="product-info-review-score">4.5</span>
                     <span className="product-info-review-total">(3000 Reviews)</span>
                     <i className="fas fa-chevron-down" id="chevron-icon"></i>
