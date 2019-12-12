@@ -20,13 +20,17 @@ const ProductInfo = (props) => {
                 <div className="product-feedback-bar">
                     <div className="product-info-review-bar">
                     <div id="product-info-star-placeholder"></div>
-                    <span className="product-info-review-score">4.5</span>
-                    <span className="product-info-review-total">(3000 Reviews)</span>
-                    <i className="fas fa-chevron-down" id="chevron-icon"></i>
+                    <a className="product-info-review-link" href="#">
+                        <span className="product-info-review-score">4.5 </span>
+                        <span className="product-info-review-total">(3000 Reviews)</span>
+                    </a>
+                    <a className="product-info-review-caret" href="#">
+                        <i className="fas fa-chevron-down" id="chevron-icon"></i>
+                    </a>
                     </div>
 
                     <div className="product-info-questions-bar">
-                    <a href="www.bbcnews.com" className="product-info-questions-bar-link">85 Answered Questions</a>
+                    <a href="#" className="product-info-questions-bar-link">85 Answered Questions</a>
                     </div>
                 </div>
             </div>
