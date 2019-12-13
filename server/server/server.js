@@ -1,14 +1,13 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const db = require('../db/db');
-const path = require('path')
-const cors = require('cors');
+const express = require("express");
+const bodyParser = require("body-parser");
+const db = require("../db/db");
+const path = require("path");
+const cors = require("cors");
 const app = express();
 const port = 5000;
 
-
 app.use(cors());
-app.use(express.static('public'));
+app.use(express.static("public"));
 app.use(bodyParser.json());
 
 // app.get('/getAllProducts', (req, res) => {
@@ -23,24 +22,33 @@ app.use(bodyParser.json());
 //     })
 // });
 
-app.get('/', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
-  
 
-app.post('/getSingleProduct', (req, res) => {
-    let reqItem = req.body.selectedItemId;
+app.get("/seed", (req, res) => {
+  db.seedDatabase()
+    .then(() => {
+      res.end();
+    })
+    .catch(err => {
+      res.end(err);
+    });
+});
 
-    db.getSingleProduct(reqItem)
-    .then((data) => {
-        res.send(data);
-        res.end();
+app.post("/getSingleProduct", (req, res) => {
+  let reqItem = req.body.selectedItemId;
+
+  db.getSingleProduct(reqItem)
+    .then(data => {
+      res.send(data);
+      res.end();
     })
-    .catch((err) => {
-        res.send(err);
-        res.end();
-    })
-})
+    .catch(err => {
+      res.send(err);
+      res.end();
+    });
+});
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);
