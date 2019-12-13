@@ -24,12 +24,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    // let selectedItemId = window.location.href.split("/dist/")[1];
     let selectedItemId = this.getProductID();
-    console.log(selectedItemId);
 
     axios
-      .post("http://18.191.11.202:5000/getSingleProduct", {
+      .post("http://18.191.236.232:5000/getSingleProduct", {
         selectedItemId: 54
       })
       .then(response => {
