@@ -20,11 +20,16 @@ class App extends React.Component {
   }
   
   componentDidMount() {
+    let selectedItemId = window.location.href.split("/dist/")[1];
+    console.log(selectedItemId);
     //be sure to comment out below
     // this call will go away in the final production build
+
+    // const selectedItemId = Number(document.location.href.split("/dist/")[1]);
+    // console.log(selectedItemId);
+
     // axios.post('http://18.191.11.202:5000/getSingleProduct', {
-    //   // this.state.searchItem
-    //   selectedItemId: '12-005'
+    //   selectedItemId: selectedItemId
     // })
     // .then((response) => {
     //   if (response.data.length > 0) {
@@ -45,7 +50,7 @@ class App extends React.Component {
     event.preventDefault();
 
     axios.post('http://18.191.11.202:5000/getSingleProduct', {
-      selectedItemId: this.state.searchItem
+      selectedItemId: selectedItemId
     })
     .then((response) => {
       if (response.data.length > 0) {
