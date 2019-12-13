@@ -51,7 +51,7 @@ let seedDatabase = () => {
     })
 }
 
-// module.exports.getAllProducts = getAllProducts;
+module.exports.getAllProducts = getAllProducts;
 module.exports.seedDatabase = seedDatabase;
 module.exports.getSingleProduct = getSingleProduct;
 
