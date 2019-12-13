@@ -1,129 +1,74 @@
-import React from 'react';
-import './App.css';
-import axios from 'axios';
-import Product from './components/Product'
-
+import React from "react";
+import "./App.css";
+import axios from "axios";
+const url = require("url");
+import Product from "./components/Product";
 class App extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       data: [],
-      searchItem: '',
-      selectedProduct: '',
-      skuPrefix: ''
-    }
+      searchItem: "",
+      selectedProduct: "",
+      skuPrefix: ""
+    };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSkuPrefix = this.handleSkuPrefix.bind(this);
   }
-  
-  componentDidMount() {
-    let selectedItemId = window.location.href.split("/dist/")[1];
-    console.log(selectedItemId);
-    //be sure to comment out below
-    // this call will go away in the final production build
-
-    // const selectedItemId = Number(document.location.href.split("/dist/")[1]);
-    // console.log(selectedItemId);
-
-    // axios.post('http://18.191.11.202:5000/getSingleProduct', {
-    //   selectedItemId: selectedItemId
-    // })
-    // .then((response) => {
-    //   if (response.data.length > 0) {
-    //     this.setState({selectedProduct: response.data[0]})
-    //   } else {
-    //     this.setState({selectedProduct: 404})
-    //   }
-    //   this.handleSkuPrefix()
-
-    //   console.log(response.data[0])
-    // })
-    // .catch((error) => {
-    //   console.log(error);
-    // })
+  /* Reads current pages URL and gets product id */
+  getProductID() {
+    let productUrl = window.location.href;
+    let { pathname } = new URL(productUrl);
+    return pathname.split("/")[2];
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
+  componentDidMount() {
+    // let selectedItemId = window.location.href.split("/dist/")[1];
+    let selectedItemId = this.getProductID();
+    console.log(selectedItemId);
 
-    axios.post('http://18.191.11.202:5000/getSingleProduct', {
-      selectedItemId: selectedItemId
-    })
-    .then((response) => {
-      if (response.data.length > 0) {
-        this.setState({selectedProduct: response.data[0]})
-      } else {
-        this.setState({selectedProduct: 404})
-      }
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-
+    axios
+      .post("http://18.191.11.202:5000/getSingleProduct", {
+        selectedItemId: 54
+      })
+      .then(response => {
+        if (response.data.length > 0) {
+          this.setState({ selectedProduct: response.data[0] });
+        } else {
+          this.setState({ selectedProduct: 404 });
+        }
+        this.handleSkuPrefix();
+        console.log(response.data[0]);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   handleChange(event) {
     this.setState({
       [event.target.name]: event.target.value
-    })
+    });
   }
 
   handleSkuPrefix() {
     let skuPrefix = this.state.selectedProduct.sku.split("-")[0];
-
     this.setState({
       skuPrefix
-    })
+    });
   }
 
   render() {
-    // all the code below will go away in the final production build
-    let selectItemForm;
-    let selectedItem;
-
-    if (this.state.selectedProduct === '') {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-      selectedItem = undefined;
-
-    } else if (this.state.selectedProduct === 404) {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-      selectedItem = <div>
-                        <p>Error 400</p>
-                        <p>Item Not Found</p>
-                    </div>;
-
-    } else {
-      selectItemForm =  <form onSubmit={this.handleSubmit}>
-                            <h3>Item Search</h3>
-                            <input id="search-item" name="searchItem" onChange={this.handleChange} />
-                            <button>Find Item</button>
-                          </form>
-    }
     return (
       <div className="App">
-        {/* the div below names header will go away in the final production build */}
-        <div className="Header">
-          {selectItemForm}
-          <hr></hr>
-        </div>
-
-
-        <Product selectedProductProp={this.state.selectedProduct} selectedProductSkuProp={this.state.skuPrefix} />
+        <Product
+          selectedProductProp={this.state.selectedProduct}
+          selectedProductSkuProp={this.state.skuPrefix}
+        />
       </div>
     );
   }
 }
 
-  
-  export default App;
+export default App;

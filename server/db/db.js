@@ -34,7 +34,7 @@ let seedDatabase = () => {
     return new Promise ((resolve, reject) => {
         for (let product = 0; inventory.length > product; product++) {
     
-            let queryInsert = `INSERT INTO productInfo.products
+            let queryInsert = `INSERT IGNORE INTO productInfo.products
                 (id, productName, price, links, sku, model, onHand) 
                 VALUES ("${inventory[product].id}", "${inventory[product].name}", 
                         "${inventory[product].price}", "LINK",

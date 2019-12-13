@@ -5,11 +5,10 @@ CREATE DATABASE productInfo;
 USE productInfo;
 
 CREATE TABLE products (
-  id int NOT NULL,
-  productName varchar(50) NOT NULL,
+  id int NOT NULL UNIQUE,
+  productName text NOT NULL,
   price decimal(10, 2) NOT NULL,
-  links varchar(500) NOT NULL,
-  sku varchar(10) NOT NULL,
+  sku text NOT NULL,
   model int NOT NULL,
   onHand int NOT NULL,
   PRIMARY KEY (ID)
