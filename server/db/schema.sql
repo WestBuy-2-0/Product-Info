@@ -8,10 +8,7 @@ CREATE TABLE products (
   sku text NOT NULL,
   model int NOT NULL,
   onHand int NOT NULL,
-  optionOne text,
-  optionTwo text,
-  optionThree text,
-  optionFour text,
+  options text,
   auxCategory text,
   PRIMARY KEY (ID)
 );
