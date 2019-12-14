@@ -9,12 +9,14 @@ const ProductInfoCart = props => {
       <ProductInfoPrice productInfoPriceProp={props.productInfoCartProp} />
       <ProductInfoVariation
         productInfoVariationProp={props.productInfoCartProp}
+        selectedProductOptions={props.selectedProductOptions}
       />
-      <ProductInfoFulfillment />
+      <ProductInfoFulfillment selectedProductTime={props.selectedProductTime} />
 
       <div className="product-info-cart">
         <button className="product-info-cart-button">
-          <i className="fas fa-shopping-cart"></i>Add to Wagon
+          <img src="product-info/client/src/public/images/cart.svg" />
+          Add to Wagon
         </button>
         <div className="product-info-cart-aux">
           <div className="product-info-compare">

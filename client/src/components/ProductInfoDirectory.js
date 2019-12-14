@@ -5,8 +5,8 @@ const ProductInfoDirectory = props => {
 
   const renderCategory = category => {
     let subCategory;
-    if (props.productInfoDirectoryProp.auxCategory === null) {
-      subCategory = <div></div>;
+    if (props.productInfoDirectoryProp.auxCategory === "null") {
+      subCategory = <></>;
     } else {
       subCategory = (
         <a href="#" className="product-info-category-directory">
@@ -28,6 +28,7 @@ const ProductInfoDirectory = props => {
         <a href="#" className="product-info-category-directory">
           {category}
         </a>
+
         {subCategory}
       </div>
     );

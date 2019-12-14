@@ -4,29 +4,39 @@ const ProductInfoVariation = props => {
   let productInfoVariationOne;
   let productInfoVariationTwo;
 
-  if (props.productInfoVariationProp.options !== null) {
+  if (props.productInfoVariationProp.options === "[null]") {
+    productInfoVariationOne = null;
+  } else {
     productInfoVariationOne = (
       <div className="product-info-variations">
-        <div className="product-info-variations-header">Available Sizes:</div>
+        <div className="product-info-variations-header">Available Options:</div>
         <label className="product-info-variations-label">
-          {props.productInfoVariationProp.options}
+          <select className="product-info-variations-drop-down">
+            <option>{props.selectedProductOptions[0]}</option>
+            {props.selectedProductOptions.map((option, key) => (
+              <option value={option} key={key}>
+                {option}
+              </option>
+            ))}
+            <option>None</option>
+          </select>
         </label>
       </div>
     );
-  } else {
-    productInfoVariationOne = undefined;
   }
 
   if (props.productInfoVariationProp.onHand < 1) {
     productInfoVariationTwo = (
       <div className="product-info-variations">
-        <div className="product-info-variations-header">Out of Stock!</div>
+        <div className="product-info-variations-header-two-b">
+          Out of Stock!
+        </div>
       </div>
     );
   } else {
     productInfoVariationTwo = (
       <div className="product-info-variations">
-        <div className="product-info-variations-header">In Stock!</div>
+        <div className="product-info-variations-header-two-c">In Stock!</div>
       </div>
     );
   }
