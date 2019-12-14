@@ -29,7 +29,7 @@ class App extends React.Component {
 
     axios
       .post("http://18.191.236.232:5000/getSingleProduct", {
-        selectedItemId: 5
+        selectedItemId: 77
         // selectedItemId
       })
       .then(response => {
