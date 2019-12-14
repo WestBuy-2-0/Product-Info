@@ -3,6 +3,7 @@ import "./App.css";
 import axios from "axios";
 const url = require("url");
 import Product from "./components/Product";
+
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,8 @@ class App extends React.Component {
 
     axios
       .post("http://18.191.236.232:5000/getSingleProduct", {
-        selectedItemId: 54
+        selectedItemId: 5
+        // selectedItemId
       })
       .then(response => {
         if (response.data.length > 0) {
@@ -36,8 +38,8 @@ class App extends React.Component {
         } else {
           this.setState({ selectedProduct: 404 });
         }
-        this.handleSkuPrefix();
-        console.log(response.data[0]);
+        // this.handleSkuPrefix();
+        // console.log(response.data[0]);
       })
       .catch(error => {
         console.log(error);
