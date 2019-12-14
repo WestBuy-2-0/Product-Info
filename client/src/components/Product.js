@@ -18,7 +18,7 @@ const Product = props => {
         </div>
         <div id="product-info-id">
           <ProductInfo productInfoProp={props.selectedProductProp} />
-        <div>
+        </div>
         <div id="product-info-cart-id">
           <ProductInfoCart
             productInfoCartProp={props.selectedProductProp}
