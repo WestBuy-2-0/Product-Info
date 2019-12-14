@@ -16,13 +16,16 @@ const Product = props => {
             <button className="product-links-print">Print</button>
           </div>
         </div>
-
-        <ProductInfo productInfoProp={props.selectedProductProp} />
-        <ProductInfoCart
-          productInfoCartProp={props.selectedProductProp}
-          selectedProductOptions={props.selectedProductOptions}
-          selectedProductTime={props.selectedProductTime}
-        />
+        <div id="product-info-id">
+          <ProductInfo productInfoProp={props.selectedProductProp} />
+        <div>
+        <div id="product-info-cart-id">
+          <ProductInfoCart
+            productInfoCartProp={props.selectedProductProp}
+            selectedProductOptions={props.selectedProductOptions}
+            selectedProductTime={props.selectedProductTime}
+          />
+        </div>
       </div>
     </div>
   );

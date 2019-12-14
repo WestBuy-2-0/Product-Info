@@ -36,8 +36,6 @@ let seedDatabase = () => {
     for (let product = 0; inventory.length > product; product++) {
       let optionsArray = JSON.stringify(inventory[product].options);
 
-      console.log(typeof optionsArray, optionsArray);
-
       let queryInsert = `INSERT INTO productInfo.products
                 (id, productName, price, sku, model, onHand, options, auxCategory)
                 VALUES ("${inventory[product].id}",

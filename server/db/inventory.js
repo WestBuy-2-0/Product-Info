@@ -808,7 +808,7 @@ const inventory = [
     model: 14421,
     onHand: 24,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 82,
@@ -818,7 +818,7 @@ const inventory = [
     model: 10979,
     onHand: 24,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 83,
@@ -828,7 +828,7 @@ const inventory = [
     model: 13298,
     onHand: 7,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 84,
@@ -838,7 +838,7 @@ const inventory = [
     model: 10473,
     onHand: 4,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 85,
@@ -848,7 +848,7 @@ const inventory = [
     model: 11632,
     onHand: 18,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 86,
@@ -858,7 +858,7 @@ const inventory = [
     model: 8232,
     onHand: 10,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 87,
@@ -868,7 +868,7 @@ const inventory = [
     model: 13690,
     onHand: 20,
     options: ["20 Rounds", "50 Rounds", "100 Rounds"],
-    auxCategory: null
+    auxCategory: "Guns"
   },
   {
     id: 88,
