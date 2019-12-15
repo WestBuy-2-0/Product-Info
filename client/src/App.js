@@ -27,13 +27,13 @@ class App extends React.Component {
     let { pathname } = new URL(productUrl);
     return pathname.split("/")[2];
   }
-
   componentDidMount() {
     let selectedItemId = this.getProductID();
 
     axios
       .post("http://18.191.236.232:5000/getSingleProduct", {
-        selectedItemId
+        // selectedItemId
+        selectedItemId: 18
       })
       .then(response => {
         if (response.data.length > 0) {
@@ -41,8 +41,8 @@ class App extends React.Component {
         } else {
           this.setState({ selectedProduct: 404 });
         }
-        const options = JSON.parse(response.data[0].options);
 
+        const options = JSON.parse(response.data[0].options);
         this.setState({
           options
         });
