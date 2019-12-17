@@ -12,13 +12,12 @@ const ProductInfoVariation = props => {
         <div className="product-info-variations-header">Available Options:</div>
         <label className="product-info-variations-label">
           <select className="product-info-variations-drop-down">
-            <option>{props.selectedProductOptions[0]}</option>
+            <option>None</option>
             {props.selectedProductOptions.map((option, key) => (
               <option value={option} key={key}>
                 {option}
               </option>
             ))}
-            <option>None</option>
           </select>
         </label>
       </div>

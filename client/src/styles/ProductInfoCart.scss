@@ -103,6 +103,8 @@
     color: #d45500;
     font-size: inherit;
     font-size: 15px;
+    padding-bottom: 10px;
+    padding-top: 5px;
   }
 
   .product-info-variations-header-two-c {
@@ -177,15 +179,83 @@
     font-weight: 500;
     text-align: center;
     vertical-align: middle;
-    display: inline-block;
+    display: flex;
+    cursor: pointer;
+  }
+
+  .product-info-cart-button-text {
+    padding-top: 12.5px;
+    padding-left: 165px;
   }
 
   .product-info-cart-button:hover {
     background-color: #fff200;
   }
 
+  @keyframes cart {
+    0% {padding-left: 0px; margin-top: 0px;}
+    5% {margin-top: 4px;}
+    10% {margin-top: 0px;}
+    15% {margin-top: 3px;}
+    20% {margin-top: 2px;}
+    25% {margin-top: 4px;}
+    30% {margin-top: 0px;}
+    35% {margin-top: 3px;}
+    40% {margin-top: 0px;}
+    45% {margin-top: 4px;}
+    50% {padding-left: 25px; margin-top: 2px;}
+    55% {margin-top: 4px;}
+    60% {margin-top: 0px;}
+    70% {margin-top: 3px;}
+    75% {margin-top: 0px;}
+    80% {margin-top: 4px;}
+    85% {margin-top: 2px;}
+    90% {margin-top: 3px;}
+    95% {margin-top: 0px;}
+    100% {padding-left: 0px; margin-top: 4px;}
+  }
+
+  @keyframes cartGo {
+    0% {padding-left: 25px; margin-top: 0px;}
+    5% {margin-top: 4px;}
+    10% {margin-top: 0px;}
+    15% {margin-top: 3px;}
+    20% {margin-top: 2px;}
+    25% {margin-top: 4px;}
+    30% {margin-top: 0px;}
+    35% {margin-top: 3px;}
+    40% {margin-top: 0px;}
+    45% {margin-top: 4px;}
+    50% {padding-left: 100px; margin-top: 2px;}
+    55% {margin-top: 4px;}
+    60% {margin-top: 0px;}
+    70% {margin-top: 3px;}
+    75% {margin-top: 0px;}
+    80% {margin-top: 4px;}
+    85% {margin-top: 2px;}
+    90% {margin-top: 3px;}
+    95% {margin-top: 0px;}
+    100% {padding-left: 0px; margin-top: 4.5px;}
+  }
+
+  .product-info-cart-button:hover span{
+    animation: cart 5s;
+  }
+
+  .product-info-cart-button:focus span{
+    animation: cartGo 2.5s;
+  }
+
+  .product-info-wagon {
+    padding-top: 8px !important;
+    padding-left: 8px !important;
+    padding-bottom: 2px !important;
+    height: 35px;
+    width: 35px;
+  }
+
   .product-info-cart-aux {
-    margin-left: -18px;
+    margin-left: -15px;
     margin-right: -18px;
     margin-top: 8px;
     display: flex;

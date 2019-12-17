@@ -24,6 +24,8 @@ const Product = props => {
             productInfoCartProp={props.selectedProductProp}
             selectedProductOptions={props.selectedProductOptions}
             selectedProductTime={props.selectedProductTime}
+            selectedProductPonyTime={props.selectedProductPonyTime}
+            selectedProductRailTime={props.selectedProductRailTime}
           />
         </div>
       </div>

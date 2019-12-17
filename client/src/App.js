@@ -14,7 +14,9 @@ class App extends React.Component {
       selectedProduct: "",
       options: [],
       skuPrefix: "",
-      timeForDelivery: ""
+      timeForDelivery: "",
+      ponyDelivery: "",
+      railDelivery: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -27,13 +29,13 @@ class App extends React.Component {
     let { pathname } = new URL(productUrl);
     return pathname.split("/")[2];
   }
-
   componentDidMount() {
     let selectedItemId = this.getProductID();
 
     axios
       .post("http://18.191.236.232:5000/getSingleProduct", {
         selectedItemId
+        // selectedItemId: 85
       })
       .then(response => {
         if (response.data.length > 0) {
@@ -41,8 +43,8 @@ class App extends React.Component {
         } else {
           this.setState({ selectedProduct: 404 });
         }
-        const options = JSON.parse(response.data[0].options);
 
+        const options = JSON.parse(response.data[0].options);
         this.setState({
           options
         });
@@ -71,11 +73,23 @@ class App extends React.Component {
     moment.relativeTimeThreshold("ss", 0);
     moment.relativeTimeThreshold("m", 60);
     moment.relativeTimeThreshold("h", 24);
-    let date = moment()
-      .add(2, "days")
+
+    let timeForDelivery = moment()
+      .add(7, "days")
       .format("dddd, MMM Do");
+
+    let ponyDelivery = moment()
+      .add(10, "days")
+      .format("dddd, MMM Do");
+
+    let railDelivery = moment()
+      .add(14, "days")
+      .format("dddd, MMM Do");
+
     this.setState({
-      timeForDelivery: date
+      timeForDelivery,
+      ponyDelivery,
+      railDelivery
     });
   }
 
@@ -87,6 +101,8 @@ class App extends React.Component {
           selectedProductSkuProp={this.state.skuPrefix}
           selectedProductOptions={this.state.options}
           selectedProductTime={this.state.timeForDelivery}
+          selectedProductPonyTime={this.state.ponyDelivery}
+          selectedProductRailTime={this.state.railDelivery}
         />
       </div>
     );
