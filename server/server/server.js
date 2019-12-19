@@ -7,48 +7,64 @@ const app = express();
 const port = 5000;
 
 app.use(cors());
-app.use(express.static("public"));
+app.use(express.static("../client/dist/"));
 app.use(bodyParser.json());
 
-// app.get('/getAllProducts', (req, res) => {
-//     db.getAllProducts()
-//     .then((data) => {
-//         res.send(data);
-//         res.end();
-//     })
-//     .catch((err) => {
-//         res.send(err);
-//         res.end();
-//     })
-// });
+app.get('/', (req, res) => {
+  res.sendFile(path.join("/Users/mfuechec/Desktop/hr/product-info/client/dist/index.html"));
+})
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
-
-app.get("/seed", (req, res) => {
-  db.seedDatabase()
-    .then(() => {
-      res.end();
-    })
-    .catch(err => {
-      res.end(err);
-    });
-});
-
-app.post("/getSingleProduct", (req, res) => {
+app.get("/getSingleProduct", (req, res) => {
   let reqItem = req.body.selectedItemId;
-
+  
   db.getSingleProduct(reqItem)
+  .then(data => {
+    res.send(data);
+    res.end();
+  })
+  .catch(err => {
+    res.send(err);
+    res.end();
+  });
+});
+
+app.post("/seedDatabase", (req, res) => {
+  for (var i = 0; i < 10000000; i++) {
+    db.seedDatabase()
     .then(data => {
-      res.send(data);
+      res.send('items inserted into database');
       res.end();
     })
     .catch(err => {
       res.send(err);
       res.end();
-    });
+    })
+  }
 });
+
+app.delete("/deleteItem", (req, res) => {
+  db.emptyDatabase()
+  .then(data => {
+    res.send('DB deleted');
+    res.end();
+  })
+  .catch(err => {
+    res.send(err);
+    res.end();
+  })
+});
+
+app.put("/updateItem", (req, res) => {
+  db.updateItem(itemInfo)
+  .then(data => {
+    res.send('item info updated');
+    res.end();
+  })
+  .catch(err => {
+    res.send(err);
+    res.end();
+  })
+})
 
 app.listen(port, function() {
   console.log(`listening on port ${port}`);

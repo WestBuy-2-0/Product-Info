@@ -17,4 +17,4 @@ CREATE TABLE products (
  *  to create the database and the tables.*/
 /* For the record, these numbers were generated with Math.random,
  * please don't read into them. :) */
--- INSERT INTO prodcuts (id, price, productName, sku, model, onHand) VALUES ();
+-- INSERT INTO products (id, price, productName, sku, model, onHand) VALUES ();
