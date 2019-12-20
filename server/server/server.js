@@ -14,55 +14,60 @@ app.get('/', (req, res) => {
   res.sendFile(path.join("/Users/mfuechec/Desktop/hr/product-info/client/dist/index.html"));
 })
 
-app.get("/getSingleProduct", (req, res) => {
-  let reqItem = req.body.selectedItemId;
-  
-  db.getSingleProduct(reqItem)
-  .then(data => {
-    res.send(data);
-    res.end();
-  })
-  .catch(err => {
-    res.send(err);
-    res.end();
-  });
-});
-
-app.post("/seedDatabase", (req, res) => {
-  for (var i = 0; i < 10000000; i++) {
-    db.seedDatabase()
-    .then(data => {
-      res.send('items inserted into database');
-      res.end();
-    })
-    .catch(err => {
+app.get("/postgres_get", (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  console.log(id)
+  db.p_getSingleProduct(id, (err, data) => {
+    if (err) {
       res.send(err);
-      res.end();
-    })
-  }
-});
-
-app.delete("/deleteItem", (req, res) => {
-  db.emptyDatabase()
-  .then(data => {
-    res.send('DB deleted');
-    res.end();
-  })
-  .catch(err => {
-    res.send(err);
-    res.end();
+    } else {
+      res.send(data)
+    }
   })
 });
 
-app.put("/updateItem", (req, res) => {
-  db.updateItem(itemInfo)
-  .then(data => {
-    res.send('item info updated');
-    res.end();
+app.get("/mongo_get", (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  console.log(id)
+  db.m_getSingleProduct(id, (err, data) => {
+    if (err) {
+      res.send(err)
+    } else {
+      res.send(data)
+    }
   })
-  .catch(err => {
-    res.send(err);
-    res.end();
+})
+
+app.post("/postgres_post", (req, res) => {
+  db.p_insertNewProduct((err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  })
+});
+
+app.delete("/postgres_delete", (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  db.p_deleteProduct(id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+      console.log(id)
+    }
+  })
+});
+
+app.put("/postgres_put", (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  db.p_updateItem(id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
   })
 })
 

@@ -95,20 +95,16 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div>OOOOOOOOOOHHHHH BOOOOYYYYYYYYYY!!!!!!!!</div>
-        <button onClick={this.seedDatabase}>Seed</button>
+      <div className="App">
+        <Product
+          selectedProductProp={this.state.selectedProduct}
+          selectedProductSkuProp={this.state.skuPrefix}
+          selectedProductOptions={this.state.options}
+          selectedProductTime={this.state.timeForDelivery}
+          selectedProductPonyTime={this.state.ponyDelivery}
+          selectedProductRailTime={this.state.railDelivery}
+        />
       </div>
-      // <div className="App">
-      //   <Product
-      //     selectedProductProp={this.state.selectedProduct}
-      //     selectedProductSkuProp={this.state.skuPrefix}
-      //     selectedProductOptions={this.state.options}
-      //     selectedProductTime={this.state.timeForDelivery}
-      //     selectedProductPonyTime={this.state.ponyDelivery}
-      //     selectedProductRailTime={this.state.railDelivery}
-      //   />
-      // </div>
     );
   }
 }
