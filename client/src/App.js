@@ -33,7 +33,7 @@ class App extends React.Component {
     let selectedItemId = this.getProductID();
 
     axios
-      .post("http://18.191.236.232:5000/getSingleProduct", {
+      .post("http://18.191.236.232:5000/mongo_get", {
         selectedItemId
         // selectedItemId: 85
       })

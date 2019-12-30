@@ -1,22 +1,16 @@
-const pg = require("pg");
-const pgConfig = require("./config.js");
 const faker = require('faker');
 
+const pg = require("pg");
+const pgConfig = require("./config.js");
 const pgClient = new pg.Client(pgConfig);
 pgClient.connect();
 
-const mongoose = require('mongoose');
-const ObjectID = require('mongodb').ObjectID;
-
-const db = mongoose.connect('mongodb://localhost/product');
-const conn = mongoose.connection;
-
 let p_getSingleProduct = (input, callback) => {
-    pgClient.query(`SELECT * FROM product WHERE id === ${input}`, (err, result) => {
+    pgClient.query(`SELECT * FROM product WHERE id = ${input}`, (err, result) => {
         if (err) {
             callback(err, null);
         } else {
-            callback(null, result);
+            callback(null, result.rows);
         }
     })
 };
@@ -26,7 +20,7 @@ let p_insertNewProduct = (callback) => {
         if (err) {
             callback(err, null);
         } else {
-            callback(null, result);
+            callback(null, 'Inserted');
         }
     })
 }
@@ -43,6 +37,7 @@ let p_deleteProduct = (id, callback) => {
     )
 };
 
+
 let p_updateItem = (id, callback) => {
     pgClient.query(
         `UPDATE product SET price = 00.00 WHERE id = ${id}`, (err, result) => {
@@ -52,26 +47,63 @@ let p_updateItem = (id, callback) => {
                 callback(null, result);
             }
         }
-    )
-};
+        )
+    };
+    
+var MongoClient = require('mongodb').MongoClient;
+const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true });
+var db = '';
+var col = '';
+
+client.connect(err => {
+    if (err) {
+        throw err;
+    }
+    db = client.db('product');
+    col = db.collection('product');
+})
+
+let m_updateItem = (id, callback) => {
+    col.update({"_id": id}, {"price": 00}, {}, function(err, results) {
+        if (err) {
+            callback(err, null);
+        }
+        callback(null, results);
+    })
+}
+
+let m_deleteProduct = (id, callback) => {
+    col.update({"_id": id}, {"productname": null, "price": null, "sku": null, "model": null, "onhand": null, "options": null, "auxcategory": null}, {}, function(err, results) {
+        if (err) {
+            callback(err, null);
+        }
+        callback(null, results);
+    })
+}
 
 let m_getSingleProduct = (id, callback) => {
-    conn.collection('product').findOne({ "id": id }, (err, results) => {
-        if (err) {
-            callback(err, null)
-        } else {
-            callback(null, results)
+    col.find({"_id": id}).toArray(function(error, results) {
+        if (error) {
+            callback(err, null);
         }
+        callback(null, results[0])
     })
 };
 
-// let m_insertNewProduct = (callback) => {
-    // conn.collection('product').insertOne({"productname": faker.commerce.productName(), "price": faker.commerce.price(), "sku": faker.finance.account(), "model": faker.commerce.productAdjective(), "onhand": faker.random.number(), "options": faker.commerce.productMaterial(), "auxcategory": faker.commerce.department()})
-// }
+let m_insertNewProduct = (callback) => {
+    col.insertOne({"productname": faker.commerce.productName(), "price": faker.commerce.price(), "sku": faker.finance.account(), "model": faker.commerce.productAdjective(), "onhand": faker.random.number(), "options": faker.commerce.productMaterial(), "auxcategory": faker.commerce.department()}, function(err, results) {
+        if (err) {
+            callback(err, null);
+        }
+        callback(null, results);
+    });
+}
 
 module.exports.p_updateItem = p_updateItem;
 module.exports.p_deleteProduct = p_deleteProduct;
 module.exports.p_getSingleProduct = p_getSingleProduct;
 module.exports.p_insertNewProduct = p_insertNewProduct;
 module.exports.m_getSingleProduct = m_getSingleProduct;
-// module.exports.m_insertNewProduct = m_insertNewProduct;
+module.exports.m_insertNewProduct = m_insertNewProduct;
+module.exports.m_deleteProduct = m_deleteProduct;
+module.exports.m_updateItem = m_updateItem;

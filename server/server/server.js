@@ -15,8 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get("/postgres_get", (req, res) => {
-  var id = Math.floor(Math.random() * 10000000)
-  console.log(id)
+  var id = Math.floor(Math.random() * 10000000);
   db.p_getSingleProduct(id, (err, data) => {
     if (err) {
       res.send(err);
@@ -28,7 +27,6 @@ app.get("/postgres_get", (req, res) => {
 
 app.get("/mongo_get", (req, res) => {
   var id = Math.floor(Math.random() * 10000000)
-  console.log(id)
   db.m_getSingleProduct(id, (err, data) => {
     if (err) {
       res.send(err)
@@ -48,21 +46,51 @@ app.post("/postgres_post", (req, res) => {
   })
 });
 
-app.delete("/postgres_delete", (req, res) => {
-  var id = Math.floor(Math.random() * 10000000)
-  db.p_deleteProduct(id, (err, data) => {
+app.post("/mongo_post", (req, res) => {
+  db.m_insertNewProduct((err, data) => {
     if (err) {
       res.send(err);
     } else {
       res.send(data);
-      console.log(id)
+    }
+  })
+})
+
+app.delete("/postgres_delete", (req, res) => {
+  db.p_deleteProduct(Math.floor(Math.random() * 10000000), (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
     }
   })
 });
 
+app.delete("/mongo_delete", (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  db.m_deleteProduct(id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  })
+})
+
 app.put("/postgres_put", (req, res) => {
   var id = Math.floor(Math.random() * 10000000)
   db.p_updateItem(id, (err, data) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.send(data);
+    }
+  })
+})
+
+app.put('/mongo_put', (req, res) => {
+  var id = Math.floor(Math.random() * 10000000)
+  db.m_updateItem(id, (err, data) => {
     if (err) {
       res.send(err);
     } else {

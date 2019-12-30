@@ -2,7 +2,7 @@ const faker = require('faker');
 const mongoose = require('mongoose');
 const ObjectID = require('mongodb').ObjectID;
 
-const db = mongoose.connect('mongodb://localhost/product');
+const db = mongoose.connect('mongodb://localhost/product', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true });
 const conn = mongoose.connection;
 
 conn.on('error', console.error.bind(console, 'MongoDB connection error:'))
@@ -23,12 +23,11 @@ var seedDatabase = function() {
   var twentyFiveHundo = function() {
     var bulkInserts = [];
     for (var i = 0; i < 2500; i++) {
-      bulkInserts.push({insertOne: {"productname": faker.commerce.productName(), "price": faker.commerce.price(), "sku": faker.finance.account(), "model": faker.commerce.productAdjective(), "onhand": faker.random.number(), "options": faker.commerce.productMaterial(), "auxcategory": faker.commerce.department()}})
+      bulkInserts.push({insertOne: {"_id": id, "productname": faker.commerce.productName(), "price": faker.commerce.price(), "sku": faker.finance.account(), "model": faker.commerce.productAdjective(), "onhand": faker.random.number(), "options": faker.commerce.productMaterial(), "auxcategory": faker.commerce.department()}})
       id++;
     }
     conn.collection('product').bulkWrite(bulkInserts);
   }
 }
-
 
 seedDatabase();
