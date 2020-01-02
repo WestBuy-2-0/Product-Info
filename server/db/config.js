@@ -1,9 +1,9 @@
 var connectionString = {
-    user: "postgres",
+    user: "mfuechec",
     host: "localhost",
-    database: "postgres",
+    database: "mfuechec",
     password: "Homeokickass01",
-    port: "3829"
-}
+    port: "5432"
+};
 
 module.exports = connectionString;
