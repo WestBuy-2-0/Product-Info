@@ -49,22 +49,22 @@ let p_updateItem = (id, callback) => {
         }
         )
     };
-    
+
 var MongoClient = require('mongodb').MongoClient;
 const client = new MongoClient('mongodb://localhost:27017', { useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true });
 var db = '';
 var col = '';
 
-client.connect(err => {
-    if (err) {
-        throw err;
-    }
-    db = client.db('product');
-    col = db.collection('product');
-})
+// client.connect(err => {
+//     if (err) {
+//         throw err;
+//     }
+//     db = client.db('product');
+//     col = db.collection('product');
+// })
 
 let m_updateItem = (id, callback) => {
-    col.update({"_id": id}, {"price": 00}, {}, function(err, results) {
+    col.updateOne({"_id": id}, {"price": 00}, {}, function(err, results) {
         if (err) {
             callback(err, null);
         }
@@ -73,7 +73,7 @@ let m_updateItem = (id, callback) => {
 }
 
 let m_deleteProduct = (id, callback) => {
-    col.update({"_id": id}, {"productname": null, "price": null, "sku": null, "model": null, "onhand": null, "options": null, "auxcategory": null}, {}, function(err, results) {
+    col.updateOne({"_id": id}, {"productname": null, "price": null, "sku": null, "model": null, "onhand": null, "options": null, "auxcategory": null}, {}, function(err, results) {
         if (err) {
             callback(err, null);
         }
@@ -82,7 +82,7 @@ let m_deleteProduct = (id, callback) => {
 }
 
 let m_getSingleProduct = (id, callback) => {
-    col.find({"_id": id}).toArray(function(error, results) {
+    col.findOne({"_id": id}, function(error, results) {
         if (error) {
             callback(err, null);
         }

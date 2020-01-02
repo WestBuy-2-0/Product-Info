@@ -33,7 +33,7 @@ class App extends React.Component {
     let selectedItemId = this.getProductID();
 
     axios
-      .post("http://18.191.236.232:5000/mongo_get", {
+      .post("http://18.191.236.232:5000/getSingleProduct", {
         selectedItemId
         // selectedItemId: 85
       })
@@ -95,16 +95,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <Product
-          selectedProductProp={this.state.selectedProduct}
-          selectedProductSkuProp={this.state.skuPrefix}
-          selectedProductOptions={this.state.options}
-          selectedProductTime={this.state.timeForDelivery}
-          selectedProductPonyTime={this.state.ponyDelivery}
-          selectedProductRailTime={this.state.railDelivery}
-        />
+      <div>
+        <div>OOOOOOOOOOHHHHH BOOOOYYYYYYYYYY!!!!!!!!</div>
+        <button onClick={this.seedDatabase}>Seed</button>
       </div>
+      // <div className="App">
+      //   <Product
+      //     selectedProductProp={this.state.selectedProduct}
+      //     selectedProductSkuProp={this.state.skuPrefix}
+      //     selectedProductOptions={this.state.options}
+      //     selectedProductTime={this.state.timeForDelivery}
+      //     selectedProductPonyTime={this.state.ponyDelivery}
+      //     selectedProductRailTime={this.state.railDelivery}
+      //   />
+      // </div>
     );
   }
 }

@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const express = require("express");
 const bodyParser = require("body-parser");
 const db = require("../db/db");
@@ -7,7 +8,7 @@ const app = express();
 const port = 5000;
 
 app.use(cors());
-app.use(express.static("../client/dist/"));
+app.use(express.static("../client/dist"));
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -15,7 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.get("/postgres_get", (req, res) => {
-  var id = Math.floor(Math.random() * 10000000);
+  var id = 56785
   db.p_getSingleProduct(id, (err, data) => {
     if (err) {
       res.send(err);

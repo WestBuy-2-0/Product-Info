@@ -24,3 +24,5 @@ yarn-error.log*
 
 scratch.txt
 db.config.js
+password.js
+/Users/mfuechec/Desktop/hr/product-info/server/server/newrelic.js

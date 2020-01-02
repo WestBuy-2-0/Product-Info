@@ -25,7 +25,7 @@ pgClient.query(
     TABLESPACE pg_default;
     
     ALTER TABLE public.product
-        OWNER to postgres;`
+        OWNER to mfuechec;`
 )
 
 let seedDatabase = () => {
